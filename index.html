@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>QUIZ</title>
+    
+</head>
+
+<body class="container-fluid text-center row">
+
+    <div class = "row box m-auto align-items-center p-4">
+        
+        <h1 id="title"> QUIZ</h1>
+
+        <header class="start">
+            <section class="conteudos align-items-center  ">
+                <p> Leia a questão e clique na resposta</p>
+                <button type="button" id="button_start" class="align-items-center row justify-content-center btn btn-primary">Começar</button>
+            </section>
+        </header> 
+
+        <section class="disabled mx-auto row align-items-center" id="theme">
+            <p> Escolha uma opção</p>   
+                <button type="button"  class="my-2 btn btn-primary" id="btnTheme">Artes e Entretenimento</button>
+                <button type="button"  class="my-2 btn btn-primary">Mundo</button>
+                <button type="button"  class="my-2 btn btn-primary">Sociedade</button> 
+        </section>
+
+        <div class="placar disabled" id="placar">
+            Pontos <span id="pontos"></span> 
+        </div>
+
+        <section class="disabled mx-auto align-items-center" id="pageQuest">
+            <header>
+                <h5 class="tema" id="tema"></h5>
+            </header>
+
+            <main id="perguntas" >
+       
+                <section class="questao">
+                    <span id="numquestao" class="numquestao"></span>
+                    <h7 id="pergunta"></h7>
+                </section>
+    
+                <section type="A" class='row'id='alternativas'>
+                    <button type="button" id="a" class="my-2 btn btn-primary">a</button>
+                    <button type="button" id="b" class="my-2 btn btn-primary">a</button>
+                    <button type="button" id="c" class="my-2 btn btn-primary">a</button>   
+                </section>
+            </main>
+
+            <footer id='aviso'>
+                Questão <span id='numero'></span> 
+                de <span id='total'></span>
+            </footer>
+        </section>
+
+        <section id='wrongAnswer' class="disabled">
+            <h4>Fim</h4>
+        </section>
+
+        <section id="rightAnswer" class="disabled">
+            <h2>PARABÉNS ACERTOU TODAS</h2>
+        </section>
+
+    <div>
+
+    <script src="./js/main.js" type="module"></script>
+</body>
+</html>
