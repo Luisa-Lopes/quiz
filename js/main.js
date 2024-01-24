@@ -72,7 +72,7 @@ function createQuest(topic) {
   let quest = (block.pergunta)
   rightAnswer = block.correta
 
-  console.log(rightAnswer)
+  //console.log(rightAnswer)
 
   //Mostra a pergunta, opções e a quantidade de questões
   questDiv.innerText = quest
