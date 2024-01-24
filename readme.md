@@ -57,4 +57,4 @@ Essa função declara o fim do jogo e exibe a opção de jogar novamente, caso o
 Essa função mostrará na tela inicial qual foi a melhor pontuação do jogador e para isso será utilizado o LocalStorage.
 
 -   **O arquivo JSON**
-    O arquivo contará com uma lista de 45 objetos e cada um com atributos: id, tema, pergunta, 1, 2, 3, correta. Os números 1,2,3 simbolizada as alternativas.
+    O arquivo contará com uma lista de 45 objetos e cada um com atributos: id, tema, pergunta, 1, 2, 3, correta. Os números 1,2,3 simbolizada as alternativas.git
