@@ -1,4 +1,4 @@
-#QUIZ
+# QUIZ
 
 Esse projeto foi inspirado no jogo de tabuleiro Quest, o para ser desenvolvido foi dividido em 3 tipos temas que são: artes e entretenimento, mundo e sociedade. Um arquivo do tipo JSON terá as perguntas e resposta. A partir disso, o site deve ter uma tela inicial com um botão para começar o Quiz e em seguida deve ser apresentado ao usuário as 3 opções de temas e aguardar sua escolha. Em seguida deve-se apresentaras perguntas referentes a temática que o usuário escolheu, em que deverá ser disponibilizado um total de 10 perguntas, e cada uma vale 10 pontos. Na tela da pergunta deve-se apresentar a pergunta, quantos pontos o jogador já possui, e o número da pergunta que ele está respondendo atualmente (ex.: questão 6 de 10). Por fim, é necessário fazer uma tela de fim de jogo, em que é apresentado o total de pontos que o usuário obteve, a frase “fim” ou “fim de jogo” e um botão para jogar novamente.
 
@@ -38,6 +38,8 @@ Esta função/event deverá começar o quiz com o tema selecionado.
 Esta função vai chamar a chooseNum(tema) que retornará um número aleatório de acordo com o tema. Este número selecionará uma determinada questão do arquivo JSON e mostrará no site a pergunta e as opções.
 
 ## chooseNum(tamanho, tema)
+
+<<<<<<< HEAD
 
 Essa função será responsável por gerar e retornar um número aleatório entre 1 e o parâmetro tamanho, que servirá para escolher a pergunta que será apresentada. Em seguida ela deve registrar o número escolhido para que a pergunta não seja repetida, e com isso, verificar se o número gerado aleatoriamente já foi utilizado anteriormente.
 As perguntas de cada tema estão agrupadas num intervalo de 15 em 15, então essa diferenciação deve ser feita utilizando o parâmetro tema.
