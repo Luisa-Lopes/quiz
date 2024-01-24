@@ -1,147 +1,167 @@
-import { conectJson } from "./conectJson.js";
+import { connectJson } from "./connectJson.js";
 
-const data = await conectJson.getJson()
+const data = await connectJson.getJson()
 
 //Divisão dos temas
-const secTheme = document.querySelector("#theme") 
+const secTheme = document.querySelector("#theme")
 //Divisão que mostrar as questões
 const pageQuest = document.querySelector('#pageQuest')
 
 //  PLACAR
-let pontos = 0
-let pontuacao = document.getElementById('pontos')
-let placar = document.getElementById('placar')
+let points = 0
+let pointing = document.getElementById('pontos')
+let scoreboard = document.getElementById('placar')
 
 //  PERGUNTAS
-let numQ = document.getElementById('numquestao')
-let perg = document.getElementById('pergunta')
+let numQuest = document.getElementById('numQuest')
+let questDiv = document.getElementById('pergunta')
 
 //  ALTERNATIVAS
-let a = document.getElementById('a')
-let b = document.getElementById('b')
-let c = document.getElementById('c')
+let alternatives = []
+alternatives[0] = document.getElementById('a')
+alternatives[1] = document.getElementById('b')
+alternatives[2] = document.getElementById('c')
 
 // APRESENTA QUANTAS QUESTÕES FALTAM 
-let numero = document.querySelector('#numero')
+let number = document.querySelector('#numero')
 let total = document.querySelector('#total')
 
 const btnStart = document.querySelector("#button_start")
 
-btnStart.addEventListener("click", function(){
-    document.querySelector(".start").classList.add("disabled") 
-    secTheme.classList.remove("disabled")
+btnStart.addEventListener("click", function () {
+  document.querySelector(".start").classList.add("disabled")
+  secTheme.classList.remove("disabled")
 })
 
 //TEMA ESCOLHIDO  
-secTheme.addEventListener('click', function(btn){
-    let tema = btn.target.firstChild.data
-    secTheme.classList.add("disabled")
-    pageQuest.classList.remove("disabled")
-    
-    document.getElementById("tema").innerText = tema
+secTheme.addEventListener('click', function (btn) {
+  let topic = btn.target.firstChild.data;
 
-    creatQuest(tema)
-    placar.classList.remove("disabled")
+  secTheme.classList.add("disabled");
+  pageQuest.classList.remove("disabled");
+
+  document.getElementById("tema").innerText = topic
+
+  createQuest(topic)
+  scoreboard.classList.remove("disabled")
 }
 )
-var num 
-var cont =  1
-var rightAnswer 
+let num
+let counter = 1
+let rightAnswer
 
-function creatQuest(tema){ 
-   
-    //Todas as perguntas
-    if(cont == 11){
-      end()
-    }
-    //Mostra a pontuação
-    pontuacao.innerHTML = pontos
-    numQ.innerHTML =  cont 
+function createQuest(topic) {
 
-    //Escolhe o número da questao
-    num = chooseNum(15,tema)
+  //Todas as perguntas
+  if (counter == 11) {
+    endGame()
+  }
+  //Mostra a pontuação
+  pointing.innerHTML = points
+  numQuest.innerHTML = counter
 
-    var block = data.find(element => element.id == num)
-    
-    while(block == undefined){block = data[num]}
-   
-    let quest = (block.pergunta)
-    rightAnswer = block.correta
+  //Escolhe o número da questão
+  num = chooseNum(data[topic]?.length - 1)
 
-    console.log(rightAnswer)
-  
-    //Mostra a pergunta, opções e a quatidade de questões
-    perg.innerText = quest
-    a.innerText = block[1]
-    b.innerText = block[2]
-    c.innerText = block[3]
-    a.setAttribute('value', 'A')
-    b.setAttribute('value', 'B')
-    c.setAttribute('value', 'C')
-    numero.innerText = cont
-    total.innerText = "10"
+  let block
+
+  while (block == undefined) {
+    block = data[topic].find(element => element.id === num)
   }
 
+  let quest = (block.pergunta)
+  rightAnswer = block.correta
 
-var usado = [] //Array com todos os número que já usaram
-function chooseNum(tamanho,tema){
-  let aleatorio = Math.floor(Math.random()*tamanho + 1)
+  console.log(rightAnswer)
 
-  while(usado.indexOf(aleatorio) != -1 || aleatorio == undefined){
-    aleatorio = Math.floor(Math.random()*tamanho + 1)
+  //Mostra a pergunta, opções e a quantidade de questões
+  questDiv.innerText = quest
+  alternatives[0].innerText = block[1]
+  alternatives[1].innerText = block[2]
+  alternatives[2].innerText = block[3]
+  alternatives[0].setAttribute('value', 'A')
+  alternatives[1].setAttribute('value', 'B')
+  alternatives[2].setAttribute('value', 'C')
+  number.innerText = counter
+  total.innerText = "10"
+}
+
+
+let pastNumber = [] //Array com todos os número que já usaram
+function chooseNum(tamanho) {
+  let randomNum = Math.floor(Math.random() * tamanho + 1)
+
+  while (pastNumber.indexOf(randomNum) != -1 || randomNum == undefined) {
+    randomNum = Math.floor(Math.random() * tamanho + 1)
   }
-  
-  usado.push(aleatorio)
 
-      switch (tema) {
-        case 'Mundo': 
-            aleatorio = aleatorio 
-            break
-        case 'Artes e Entretenimento':
-            aleatorio = aleatorio + 15
-            break
-        case 'Sociedade':
-            aleatorio = aleatorio + 30
-            break;
-        }
-      return aleatorio
-  
+  pastNumber.push(randomNum)
+
+  return randomNum
 }
 
 const answer = document.querySelector("#alternativas")
 
-answer.addEventListener("click",function (btn){
-    var resposta = btn.target.firstChild.data
-    var tema = document.getElementById('tema').textContent
+answer.addEventListener("click", function (btn) {
+  let answer = btn.target.firstChild.data
+  let topic = document.getElementById('tema').textContent
 
-    if(rightAnswer == resposta){
-        pontos = pontos + 10
-        cont++
-        creatQuest(tema)
-    }
-    else{ end() }
+  if (rightAnswer == answer) {
+    points = points + 10
+    counter++
+    createQuest(topic)
+  }
+  else { endGame() }
 
 })
-  
- function end(){
-    pageQuest.classList.add("disabled")
-    const btn = document.createElement('button')
-    btn.classList.add("btn","btn-primary")
-    btn.innerText = "Jogar Novamente"
 
-    btn.addEventListener("click", function(){
-      window.location.reload()
-    })
+function endGame() {
+  pageQuest.classList.add("disabled")
+  const btn = document.createElement('button')
+  btn.classList.add("btn", "btn-primary")
+  btn.innerText = "Jogar Novamente"
 
-    if(pontos == 100){
-      const right = document.querySelector("#rightAnswer")
-      right.classList.remove("disabled")
-      right.appendChild(btn)
-    }
-    else{
-      const wrong = document.querySelector("#wrongAnswer")
-      wrong.classList.remove("disabled")
-      wrong.appendChild(btn)
-    }
+  btn.addEventListener("click", function () {
+    window.location.reload()
+  })
+
+  if (points == 100) {
+    const rightAnswer = document.querySelector("#rightAnswer")
+    rightAnswer.classList.remove("disabled")
+    rightAnswer.appendChild(btn)
+  }
+  else {
+    const wrongAnswer = document.querySelector("#wrongAnswer")
+    wrongAnswer.classList.remove("disabled")
+    wrongAnswer.appendChild(btn)
+  }
+
+  bestScore(points)
+
+}
+
+function bestScore() {
+  const itens = JSON.parse(localStorage.getItem("bestScore")) || '';
+  const bestH1 = document.querySelector('#score');
+  const bestP = document.querySelector('#scoreContent');
+
+  let best = points;
+  if (itens == '') {
+    localStorage.setItem('bestScore', JSON.stringify(points))
 
   }
+  else {
+
+    if (points > itens) {
+      localStorage.setItem('bestScore', JSON.stringify(points))
+    } else {
+      best = itens;
+    }
+    bestP.classList.remove("disabled")
+    bestH1.innerText = best;
+
+  }
+
+
+}
+bestScore()

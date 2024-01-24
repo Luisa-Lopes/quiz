@@ -15,11 +15,17 @@
 
 <body class="container-fluid text-center row">
 
-    <div class = "row box m-auto align-items-center p-4">
+    <div class = "row box m-auto align-items-center p-4 ">
         
         <h1 id="title"> QUIZ</h1>
 
         <header class="start">
+            
+            <p class="disabled" id="scoreContent" >
+                 Best Score
+                <h3 id="score" class="text-primary-emphasis fs-1 font-bold"></h3>
+            </p>
+
             <section class="conteudos align-items-center  ">
                 <p> Leia a questão e clique na resposta</p>
                 <button type="button" id="button_start" class="align-items-center row justify-content-center btn btn-primary">Começar</button>
@@ -39,13 +45,13 @@
 
         <section class="disabled mx-auto align-items-center" id="pageQuest">
             <header>
-                <h5 class="tema" id="tema"></h5>
+                <h5 class="tema" id="tema" class=""></h5>
             </header>
 
             <main id="perguntas" >
        
                 <section class="questao">
-                    <span id="numquestao" class="numquestao"></span>
+                    <span id="numQuest" class="numquestao rounded-circle bg-info p-2 "></span>
                     <h7 id="pergunta"></h7>
                 </section>
     
