@@ -39,8 +39,6 @@ Esta função vai chamar a chooseNum(tema) que retornará um número aleatório 
 
 ## chooseNum(tamanho, tema)
 
-<<<<<<< HEAD
-
 Essa função será responsável por gerar e retornar um número aleatório entre 1 e o parâmetro tamanho, que servirá para escolher a pergunta que será apresentada. Em seguida ela deve registrar o número escolhido para que a pergunta não seja repetida, e com isso, verificar se o número gerado aleatoriamente já foi utilizado anteriormente.
 As perguntas de cada tema estão agrupadas num intervalo de 15 em 15, então essa diferenciação deve ser feita utilizando o parâmetro tema.
 
